@@ -193,11 +193,17 @@ function removeSameTsumImages(tsumMaxScores, threshold) {
       if (i == j) {
         continue;
       }
-      var imgI = tsumMaxScores[i].img;
-      var imgJ = tsumMaxScores[j].img;
-      var score = getIdentityScore(imgI, imgJ);
-      if (score > threshold) {
+      var nameI = tsumMaxScores[i].key;
+      var nameJ = tsumMaxScores[j].key;
+      if (nameI.substring(0,10)==nameJ.substring(0,10)) {
         erase.push(j);
+      } else {
+        var imgI = tsumMaxScores[i].img;
+        var imgJ = tsumMaxScores[j].img;
+        var score = getIdentityScore(imgI, imgJ);
+        if (score > threshold) {
+          erase.push(j);
+        }
       }
     }
     for (var k = erase.length - 1; k >= 0; k--) {
