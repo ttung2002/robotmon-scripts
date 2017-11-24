@@ -791,7 +791,7 @@ Tsum.prototype.taskPlayGame = function() {
   // start to run
   var runTimes = 0;
   var pathZero = 0;
-  var clearBubbles = false;
+  var clearBubbles = 0;
   while(this.isRunning) {  
     // load game tsums
     var gameImage = this.playScreenshot();
@@ -849,11 +849,11 @@ Tsum.prototype.taskPlayGame = function() {
     var isBubble = this.link(paths);
     if (isBubble) {
       log("產生泡泡");
-      clearBubbles = true;
+      clearBubbles++;
     }
 
     // click bubbles
-    if (this.clearBubbles && clearBubbles && runTimes % 4 == 2) {
+    if (this.clearBubbles && clearBubbles > 5) {
       log("Clear bubbles");
       clearBubbles = false;
       for (var bx = Button.gameBubblesFrom.x; bx <= Button.gameBubblesTo.x; bx += 150) {
@@ -1122,8 +1122,8 @@ Tsum.prototype.taskSendHearts = function() {
         this.moveTo (Button.outSendHeart3, 100);
         this.moveTo (Button.outSendHeart2, 100);
         this.moveTo (Button.outSendHeart1, 100);
-        this.moveTo (Button.outSendHeart0, 800);
-        this.tapUp  (Button.outSendHeart0, 100);
+        this.moveTo ({x:Button.outSendHeart0.x,y:Button.outSendHeart0.y-202}, 800);
+        this.tapUp  ({x:Button.outSendHeart0.x,y:Button.outSendHeart0.y-202}, 100);
         retry++;
         log("沒愛心可送或零分，再檢查次數: " + retry);
         this.sleep(1000);
@@ -1144,8 +1144,8 @@ Tsum.prototype.taskSendHearts = function() {
       this.moveTo (Button.outSendHeart3, 100);
       this.moveTo (Button.outSendHeart2, 100);
       this.moveTo (Button.outSendHeart1, 100);
-      this.moveTo (Button.outSendHeart0, 800);
-      this.tapUp  (Button.outSendHeart0, 100);
+      this.moveTo ({x:Button.outSendHeart0.x,y:Button.outSendHeart0.y-202}, 800);
+      this.tapUp  ({x:Button.outSendHeart0.x,y:Button.outSendHeart0.y-202}, 100);
       this.sleep(1000);
     }
   }
