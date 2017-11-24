@@ -51,6 +51,11 @@ var Config = {
     // block_sulley_s: -0.02,
     // block_arlo_s: 0.03,
     // block_lotso_s: 0.03,
+    block_deathtrooper_s: -0.05,
+    block_vader_s: -0.05,
+    block_stormtrooper: -0.05,
+    block_k2so_s: -0.05,
+    block_troll_s: -0.05,
   },
 };
 
